@@ -9,17 +9,28 @@ left_button = Button(14)
 left_name = input('left player name is ')
 right_name = input('right player name is ')
 
+left_point=0
+right_point=0
+def pressed(button):
+	global left_point,right_point
+	if button.pin.number ==14:
+		print(left_name + ' won the game')
+		left_point+=1
+	else:
+		print(right_name + ' won the game')      
+		right_point+=1
+	led.on()
+	sleep(uniform(5,10))
+	led.off()
+	print('left_point' + str(left_point) + 'right_point' + str(right_point))
+right_button.when_pressed = pressed
+left_button.when_pressed = pressed
 led.on()
 sleep(uniform(5,10))
 led.off()
+print('left_point ' + str(left_point) + ' right_point ' + str(right_point))
 
-def pressed(button):
-	if button.pin.number ==14:
-		print(left_name + 'won the game')
-	else:
-		print(right_name + 'won the game')
-	exit()
-right_button.when_pressed = pressed
-left_button.when_pressed = pressed
+while(left_point<=5 and right_point<=5):
+	sleep(0.01)
 
 
