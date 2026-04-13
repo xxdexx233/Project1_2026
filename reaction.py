@@ -13,7 +13,7 @@ left_point=0
 right_point=0
 
 def pressed(button):
-  global left_point,right_point,start_time
+	global left_point,right_point,start_time
 	pressed_time = time()
 	reaction_time = round((pressed_time - start_time) * 1000 , 2)
 	if button.pin.number ==14:
@@ -22,11 +22,12 @@ def pressed(button):
 	else:
 		print(right_name + ' won the game')      
 		right_point+=1
-   print('left_point' + str(left_point) + 'right_point' + str(right_point))
+	print('left_point ' + str(left_point) + ' right_point ' + str(right_point))
+	print('reaction time: '+str(reaction_time))
 	led.on()
 	sleep(uniform(5,10))
 	led.off()
-  start_time = time()
+	start_time = time()
   
 right_button.when_pressed = pressed
 left_button.when_pressed = pressed
